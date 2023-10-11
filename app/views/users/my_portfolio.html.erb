@@ -1,0 +1,55 @@
+		<div class="row">
+			<div class="col-sm-9">	
+		       <h1>My Portfolio</h1><hr>
+		    </div>   
+		</div>  
+
+		<div class="search-area">
+			<h3>Search Stocks</h3>
+			<%= form_tag search_stock_path, method: :get do %>
+			  <div class="form-group row">
+			  	<div class="col-sm-9 no-right-padding">
+			  		<%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus:true, class: "form-control form-control-lg" %>
+			  	</div>
+			  	<div class="col-sm-3 no-left-padding">
+			  		<%= button_tag type: :submit, class: "btn btn-success btn-lg" do %>
+			  		    <%= fa_icon 'search' %>
+			  		<% end %>
+			  	</div>
+			  </div>	
+			<% end %>
+		</div><br>
+	
+
+	<% if !@tracked_stocks.empty? %>
+		<div class="row">
+			<div class="col-9">
+				<table class="table table-bordered table-hover">
+		  <thead>
+		    <tr>
+		      <th scope="col">Ticker</th>
+		      <th scope="col">Name</th>
+		      <th scope="col">Price</th>
+		      <th scope="col">Action</th>
+		    </tr>
+		  </thead>
+			  <tbody>
+			  	<% @tracked_stocks.each do |stock| %>
+			    <tr>
+			      <th scope="row"><%= stock.ticker %></th>
+			      <td><%= stock.name %></td>
+			      <td><%= stock.last_price %></td>
+			      <td>
+                    
+			      	<%= button_to 'Remove',user_stock_path(stock), method: :delete,class: "btn btn-sm btn-warning"  %></td>    
+			    </tr>
+			    <% end %>
+			  </tbody>
+		</table>
+
+			</div>
+		</div>
+	<% end %>	
+
+<br><br>
+	<%= link_to 'Back To Home Page',root_path %> &nbsp

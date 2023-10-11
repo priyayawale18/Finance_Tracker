@@ -1,3 +1,20 @@
 body {
   background-color: #f5f5f5;
 }
+.search-area{
+  padding-top:50px;
+}
+.no-right-padding{
+  padding-right:0 !important;
+}
+
+.no-left-padding{
+  padding-left:0 !important;
+}
+.logout-button {
+  margin-right:5px;
+}
+.user-name{
+  margin-top:3.5%;
+  padding-right:5px;
+}
